@@ -397,8 +397,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
   margin-bottom: 28px;
 }
-.exp-card:hover { box-shadow: var(--shadow-hover); transform: translateX(4px); border-color: var(--border-hover); }
-.exp-card--current { border-left: 3px solid var(--accent-cyan); }
+.exp-card:hover { box-shadow: var(--shadow-hover); transform: translateX(4px); border-color: var(--border-hover); } }
 
 .exp-timeline-dot {
   position: absolute;
