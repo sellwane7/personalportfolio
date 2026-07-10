@@ -935,3 +935,15 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
   .skill-bar-item { grid-template-columns: 1fr; }
   .skill-bar-item > span:last-child { display: none; }
 }
+
+/* Hero typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--accent-cyan);
+  animation: blink-cursor 0.8s steps(1) infinite;
+}
+@keyframes blink-cursor {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
