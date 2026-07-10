@@ -379,14 +379,6 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
   position: relative;
   padding-left: 32px;
 }
-.experience-timeline::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 24px; bottom: 24px;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent-blue), var(--accent-cyan), var(--accent-pink));
-  border-radius: 2px;
-}
 
 .exp-card {
   background: var(--bg-card);
@@ -397,7 +389,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
   margin-bottom: 28px;
 }
-.exp-card:hover { box-shadow: var(--shadow-hover); transform: translateX(4px); border-color: var(--border-hover); } }
+.exp-card:hover { box-shadow: var(--shadow-hover); transform: translateX(4px); border-color: var(--border-hover); }
 
 .exp-timeline-dot {
   position: absolute;
