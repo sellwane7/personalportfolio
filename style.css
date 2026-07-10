@@ -388,9 +388,20 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
   position: relative;
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
   margin-bottom: 28px;
+  overflow: hidden;
+}
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
 .exp-card:hover { box-shadow: var(--shadow-hover); transform: translateX(4px); border-color: var(--border-hover); }
-
+.exp-card:hover::before { transform: scaleX(1); }
 .exp-timeline-dot {
   position: absolute;
   left: -40px; top: 32px;
