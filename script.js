@@ -474,6 +474,40 @@ function tagRevealElements() {
 }
 
 /* =============================================
+   HERO TYPEWRITER
+   ============================================= */
+function initHeroTypewriter() {
+  const plainEl = document.getElementById('heroTitlePlain');
+  const nameEl = document.getElementById('heroTitleName');
+  if (!plainEl || !nameEl) return;
+
+  const plainText = plainEl.textContent;
+  const nameText = nameEl.textContent;
+  plainEl.textContent = '';
+  nameEl.textContent = '';
+
+  let i = 0;
+  function typePlain() {
+    if (i < plainText.length) {
+      plainEl.textContent += plainText.charAt(i);
+      i++;
+      setTimeout(typePlain, 45);
+    } else {
+      let j = 0;
+      function typeName() {
+        if (j < nameText.length) {
+          nameEl.textContent += nameText.charAt(j);
+          j++;
+          setTimeout(typeName, 45);
+        }
+      }
+      typeName();
+    }
+  }
+  typePlain();
+}
+
+/* =============================================
    BOOT
    ============================================= */
 document.addEventListener('DOMContentLoaded', () => {
@@ -486,4 +520,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroParallax();
   initCertFlip();
   initFormEffects();
+  initHeroTypewriter();
 });
