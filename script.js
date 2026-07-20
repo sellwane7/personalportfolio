@@ -1,6 +1,6 @@
 /* =============================================
    JOYCE SELLWANE MOSIA — PORTFOLIO JAVASCRIPT
-   Full-Stack Developer & Cybersecurity Specialist
+   SOFWARE DEVELOPER
    ============================================= */
 
 /* =============================================
@@ -162,17 +162,30 @@ navLinks.forEach(link => {
    UNIVERSAL SCROLL-REVEAL ENGINE
    ============================================= */
 function initReveal() {
-  const items = document.querySelectorAll('[data-reveal]');
-  const io = new IntersectionObserver((entries) => {
+  // Handle data-reveal elements
+  const revealItems = document.querySelectorAll('[data-reveal]');
+  const revealIo = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      const el    = entry.target;
+      const el = entry.target;
       const delay = el.dataset.delay || 0;
       setTimeout(() => el.classList.add('is-visible'), Number(delay));
-      io.unobserve(el);
+      revealIo.unobserve(el);
     });
   }, { threshold: 0.12 });
-  items.forEach(el => io.observe(el));
+  revealItems.forEach(el => revealIo.observe(el));
+
+  // Handle reveal-line elements
+  const lineItems = document.querySelectorAll('.reveal-line');
+  const lineIo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('revealed');
+        lineIo.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  lineItems.forEach(el => lineIo.observe(el));
 }
 
 /* =============================================
@@ -453,16 +466,21 @@ function initRevealLines() {
    ============================================= */
 function tagRevealElements() {
   const selectors = [
-    { sel: '.about-card',   dir: 'up' },
-    { sel: '.exp-card',     dir: 'left' },
-    { sel: '.edu-card',     dir: 'up' },
-    { sel: '.skills-tabs',  dir: 'up' },
-    { sel: '.project-card', dir: 'up' },
-    { sel: '.cert-card',    dir: 'up' },
-    { sel: '.contact-info', dir: 'left' },
-    { sel: '.contact-form', dir: 'right' },
-    { sel: '.section-sub',  dir: 'up' },
-  ];
+  { sel: '.about-card',   dir: 'up' },
+  { sel: '.exp-card',     dir: 'left' },
+  { sel: '.edu-card',     dir: 'up' },
+  { sel: '.skills-tabs',  dir: 'up' },
+  { sel: '.skill-tab',    dir: 'up' },
+  { sel: '.skill-tag',    dir: 'up' },
+  { sel: '.project-card', dir: 'up' },
+  { sel: '.cert-card',    dir: 'up' },
+  { sel: '.cert-category-title', dir: 'up' },
+  { sel: '.contact-info', dir: 'left' },
+  { sel: '.contact-form', dir: 'right' },
+  { sel: '.section-sub',  dir: 'up' },
+  { sel: '.hero-badge',   dir: 'up' },
+  { sel: '.hero-desc',    dir: 'up' },
+];
   selectors.forEach(({ sel, dir }) => {
     document.querySelectorAll(sel).forEach((el, i) => {
       if (!el.hasAttribute('data-reveal')) {
@@ -477,34 +495,32 @@ function tagRevealElements() {
    HERO TYPEWRITER
    ============================================= */
 function initHeroTypewriter() {
-  const plainEl = document.getElementById('heroTitlePlain');
-  const nameEl = document.getElementById('heroTitleName');
-  if (!plainEl || !nameEl) return;
+  const titleEl = document.querySelector('.hero-title');
+  if (!titleEl) return;
 
-  const plainText = plainEl.textContent;
-  const nameText = nameEl.textContent;
-  plainEl.textContent = '';
-  nameEl.textContent = '';
+  // Get the text content
+  const fullText = titleEl.textContent.trim();
+  // Clear the element
+  titleEl.textContent = '';
 
   let i = 0;
-  function typePlain() {
-    if (i < plainText.length) {
-      plainEl.textContent += plainText.charAt(i);
-      i++;
-      setTimeout(typePlain, 45);
-    } else {
-      let j = 0;
-      function typeName() {
-        if (j < nameText.length) {
-          nameEl.textContent += nameText.charAt(j);
-          j++;
-          setTimeout(typeName, 45);
-        }
+  function typeChar() {
+    if (i < fullText.length) {
+      const char = fullText.charAt(i);
+      const span = document.createElement('span');
+      if (char === ' ') span.innerHTML = '&nbsp;';
+      else span.textContent = char;
+      // Check if this character is part of "Joyce Sellwane Mosia"
+      // We'll wrap the name in a highlight class
+      if (i >= fullText.indexOf('Joyce')) {
+        span.className = 'highlight';
       }
-      typeName();
+      titleEl.appendChild(span);
+      i++;
+      setTimeout(typeChar, 30 + Math.random() * 20);
     }
   }
-  typePlain();
+  typeChar();
 }
 
 /* =============================================
@@ -513,12 +529,9 @@ function initHeroTypewriter() {
 document.addEventListener('DOMContentLoaded', () => {
   tagRevealElements();
   initReveal();
-  initRevealLines();
   initTitleAnimations();
   initSectionLines();
   initTilt();
   initHeroParallax();
-  initCertFlip();
   initFormEffects();
-  initHeroTypewriter();
 });
