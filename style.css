@@ -1,6 +1,6 @@
 /* =============================================
    JOYCE SELLWANE MOSIA — PORTFOLIO STYLESHEET
-   Dark Theme · Full-Stack & Cybersecurity
+   Dark Theme · Software Developer
    ============================================= */
 
 :root {
@@ -455,26 +455,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
 .exp-badge--mentor {
   background: linear-gradient(135deg, var(--accent-pink), #a855f7);
 }
-.exp-role { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+.exp-role { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 2px; }
 .exp-company { font-size: 1rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 2px; }
-.exp-duration { font-size: 0.84rem; color: var(--text-muted); }
-
-.exp-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.exp-list li {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  padding-left: 22px;
-  position: relative;
-  line-height: 1.6;
-}
-.exp-list li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--accent-cyan);
-  font-size: 0.8rem;
-  top: 2px;
-}
+.exp-duration { font-size: 0.82rem; color: var(--text-muted); }
+.exp-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+.exp-list li { color: var(--text-muted); font-size: 0.9rem; padding-left: 22px; position: relative; line-height: 1.65; }
+.exp-list li::before { content: '▸'; position: absolute; left: 0; color: var(--accent-cyan); font-size: 0.75rem; top: 3px; }
 
 .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .exp-tag {
@@ -531,12 +517,35 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
 }
 .edu-badge--green { background: rgba(16,185,129,0.10); color: #34d399; border-color: rgba(52,211,153,0.25); }
 .edu-badge--gold  { background: rgba(234,179,8,0.10); color: #facc15; border-color: rgba(250,204,21,0.25); }
-.edu-card h3 { font-size: 1rem; font-weight: 700; color: var(--accent-pink); margin-bottom: 6px; }
-.edu-institution { color: var(--text); font-weight: 500; font-size: 0.9rem; }
-.edu-year { color: var(--text-muted); font-size: 0.84rem; margin: 4px 0 12px; }
+.edu-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--accent-pink); margin-bottom: 4px; }
+.edu-institution { color: var(--text); font-weight: 600; font-size: 0.92rem; }
+.edu-year { color: var(--text-muted); font-size: 0.82rem; margin: 2px 0 14px; }
 .edu-focus { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 10px; }
-.edu-list { padding-left: 16px; list-style: disc; }
-.edu-list li { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 4px; }
+.edu-description {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.edu-subheading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+.edu-list { padding-left: 18px; list-style: disc; margin-bottom: 14px; }
+.edu-list li { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 4px; }
+.edu-list li strong { color: var(--text); }
+.edu-outcome {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-style: italic;
+}
 
 /* ===================== SKILLS ===================== */
 .skills-tabs {
@@ -557,7 +566,28 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
 }
+.skill-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.skill-tab:hover::before {
+  transform: scaleX(1);
+}
+.skill-tab.active::before {
+  transform: scaleX(1);
+}
+
 .skill-tab:hover { border-color: var(--accent-blue); color: var(--accent-cyan); }
 .skill-tab.active {
   background: var(--accent-blue);
@@ -611,6 +641,24 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
   font-weight: 500;
   color: var(--text);
   transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.skill-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.skill-tag:hover::before {
+  transform: scaleX(1);
 }
 .skill-tag:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(34,211,238,0.08); }
 
@@ -669,27 +717,13 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
 .project-band--library { background: linear-gradient(135deg, #1a2e1a, #16a34a); }
 .project-band--pylib   { background: linear-gradient(135deg, #1a2e2e, #0891b2); }
 
-.project-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-.project-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.proj-badge {
-  background: rgba(59,130,246,0.15);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(34,211,238,0.25);
-  border-radius: 50px;
-  padding: 3px 10px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.proj-badge--solo {
-  background: rgba(244,114,182,0.10);
-  color: var(--accent-pink);
-  border-color: rgba(244,114,182,0.25);
-}
+.project-body { padding: 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.project-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 2px; }
+.proj-badge { background: rgba(59,130,246,0.15); color: var(--accent-cyan); border: 1px solid rgba(34,211,238,0.25); border-radius: 50px; padding: 3px 12px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.proj-badge--solo { background: rgba(244,114,182,0.10); color: var(--accent-pink); border-color: rgba(244,114,182,0.25); }
 .proj-tech { font-size: 0.78rem; color: var(--text-muted); }
-.project-body h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); }
-.project-body p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
+.project-body h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.project-body p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; flex: 1; margin-bottom: 4px; }
 
 .project-links { display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; }
 .btn-link {
@@ -739,11 +773,18 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
 .cert-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at top left, rgba(59,130,246,0.06) 0%, transparent 60%);
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
-.cert-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); border-color: var(--border-hover); }
+.cert-card:hover::before {
+  transform: scaleX(1);
+}
 
 .cert-icon {
   display: inline-flex;
