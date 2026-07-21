@@ -488,8 +488,20 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
   border-radius: var(--radius);
   padding: 28px;
   position: relative;
-  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);  
 }
+
+.edu-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.edu-card:hover::before { transform: scaleX(1); }
 .edu-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); border-color: var(--border-hover); }
 .edu-card--completed { border-top: 3px solid var(--accent-cyan); }
 .edu-icon {
@@ -679,7 +691,21 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
   display: flex;
   flex-direction: column;
+  position: relative; 
 }
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+.project-card:hover::before { transform: scaleX(1); }
 .project-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-5px); border-color: var(--border-hover); }
 
 .project-header-band {
