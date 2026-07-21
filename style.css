@@ -528,6 +528,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; }
 }
 .edu-badge--green { background: rgba(16,185,129,0.10); color: #34d399; border-color: rgba(52,211,153,0.25); }
 .edu-badge--gold  { background: rgba(234,179,8,0.10); color: #facc15; border-color: rgba(250,204,21,0.25); }
+.edu-badge--blue { background: rgba(59,130,246,0.10); color: var(--accent-cyan); border-color: rgba(59,130,246,0.25); }
 .edu-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--accent-pink); margin-bottom: 4px; }
 .edu-institution { color: var(--text); font-weight: 600; font-size: 0.92rem; }
 .edu-year { color: var(--text-muted); font-size: 0.82rem; margin: 2px 0 14px; }
